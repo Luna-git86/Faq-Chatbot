@@ -212,10 +212,14 @@
           }),
         });
 
+        if (!response.ok) {
+          throw new Error(`Status ${response.status}`);
+        }
+
         const data = await response.json();
         tampilkan("Bot", data.response.trim());
       } catch (error) {
-        tampilkan("Bot", "⚠️ Gagal menghubungi AI. Pastikan Ollama sedang berjalan.");
+        tampilkan("Bot", "⚠️ Gagal menghubungi AI. Cek kembali apakah model sedang berjalan.");
         console.error(error);
       }
     }
