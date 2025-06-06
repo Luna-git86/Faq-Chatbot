@@ -202,11 +202,11 @@
       input.value = "";
 
       try {
-        const response = await fetch("http://localhost:11434/api/generate", {
+        const response = await fetch("/api/ollama/api/generate", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            model: "deepseek-coder", // ganti sesuai nama model di `ollama list`
+            model: "deepseek-coder",
             prompt: teks,
             stream: false
           }),
