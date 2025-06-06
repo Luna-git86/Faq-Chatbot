@@ -116,6 +116,39 @@
     #resetBtn:hover {
       background-color: #bbb;
     }
+
+    @media (max-width: 600px) {
+      .container, #faq-section {
+        max-width: 100%;
+        margin: 10px 0 0 0;
+        border-radius: 0;
+        box-shadow: none;
+      }
+      #chatbox {
+        padding: 10px;
+        height: 300px;
+      }
+      .input-area {
+        flex-direction: column;
+        gap: 8px;
+        padding: 10px;
+      }
+      #userInput {
+        font-size: 15px;
+        padding: 8px 10px;
+      }
+      button {
+        font-size: 15px;
+        padding: 10px;
+      }
+      header {
+        font-size: 1.1em;
+        padding: 12px;
+      }
+      header img {
+        height: 36px;
+      }
+    }
   </style>
 </head>
 
@@ -135,6 +168,18 @@
       © 2025 Politeknik Negeri Samarinda - Chatbot Akademik Proyek Capstone
     </footer>
   </div>
+
+  <section id="faq-section" style="max-width:700px;margin:30px auto 0 auto;background:#fff;border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,0.05);padding:20px;">
+    <h3 style="margin-top:0;color:#66C240;">FAQ (Pertanyaan yang Sering Diajukan)</h3>
+    <ul id="faq-list" style="list-style:none;padding:0;margin:0;">
+      <li><button type="button" class="faq-btn" onclick="isiFAQ('Bagaimana cara mengisi KRS?')">Bagaimana cara mengisi KRS?</button></li>
+      <li><button type="button" class="faq-btn" onclick="isiFAQ('Bagaimana cara mendaftar skripsi?')">Bagaimana cara mendaftar skripsi?</button></li>
+      <li><button type="button" class="faq-btn" onclick="isiFAQ('Bagaimana cara pembayaran UKT?')">Bagaimana cara pembayaran UKT?</button></li>
+      <li><button type="button" class="faq-btn" onclick="isiFAQ('Bagaimana cara melihat jadwal kuliah?')">Bagaimana cara melihat jadwal kuliah?</button></li>
+      <li><button type="button" class="faq-btn" onclick="isiFAQ('Bagaimana cara mengajukan cuti akademik?')">Bagaimana cara mengajukan cuti akademik?</button></li>
+      <li><button type="button" class="faq-btn" onclick="isiFAQ('Bagaimana cara mendapatkan beasiswa?')">Bagaimana cara mendapatkan beasiswa?</button></li>
+    </ul>
+  </section>
 
   <script>
     // # Struktur Decision Tree chatbot
@@ -313,6 +358,11 @@
       const chat = document.getElementById("chatbox");
       chat.innerHTML = "";
       document.getElementById("userInput").value = "";
+    }
+
+    function isiFAQ(teks) {
+      document.getElementById('userInput').value = teks;
+      document.getElementById('userInput').focus();
     }
   </script>
 
