@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Chatbot Akademik dengan Decision Tree</title>
+  <!-- # Bagian CSS: Mengatur tampilan chatbot -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+      background-color: #f9f9f9;
+    }
+
+    #chatbox {
+      width: 100%;
+      height: 300px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      overflow-y: scroll;
+      background-color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .message {
+      margin: 5px 0;
+    }
+
+    .user {
+      color: blue;
+    }
+
+    .bot {
+      color: green;
+    }
+
+    #userInput {
+      width: 100%;
+      padding: 10px;
+      flex: 1;
+    }
+
+    .input-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 0;
+    }
+
+    #sendBtn {
+      padding: 10px 15px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    #sendBtn:hover {
+      background-color: #218838;
+    }
+
+    #resetBtn {
+      padding: 10px 15px;
+      background-color: #dc3545;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    #resetBtn:hover {
+      background-color: #c82333;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- # Judul Chatbot -->
+  <h2>Chatbot Akademik - Decision Tree</h2>
+
+  <!-- # Kotak Chat untuk menampilkan percakapan -->
+  <div id="chatbox"></div>
+
+  <!-- # Baris input dan tombol -->
+  <div class="input-row">
+    <input type="text" id="userInput" placeholder="Ketik pertanyaan..." />
+    <button id="sendBtn" onclick="kirim()">Kirim</button>
+    <button id="resetBtn" onclick="reset()">Reset</button>
+  </div>
+
+  <script>
+    // # Struktur Decision Tree chatbot
+    // Root node kosong, cabang utama adalah keyword penting
+    const decisionTree = {
+      keyword: "", // root node
+      yes: null, // tidak digunakan
+      no: {
+        keyword: "krs",
+        yes: { response: "KRS dapat diakses melalui portal akademik. Pastikan Anda sudah melakukan pembayaran UKT dan tidak memiliki tunggakan." },
+        no: {
+          keyword: "skripsi",
+          yes: {
+            keyword: "pendaftaran",
+            yes: { response: "Pendaftaran skripsi dilakukan melalui portal akademik. Persiapkan proposal dan surat persetujuan dosen pembimbing." },
+            no: {
+              keyword: "seminar",
+              yes: { response: "Seminar proposal dan hasil dapat dijadwalkan setelah berkas lengkap dan disetujui dosen pembimbing." },
+              no: { response: "Untuk informasi lebih lanjut tentang skripsi, silakan hubungi koordinator skripsi di fakultas Anda." }
+            }
+          },
+          no: {
+            keyword: "ukt",
+            yes: {
+              keyword: "pembayaran",
+              yes: { response: "Pembayaran UKT dapat dilakukan melalui bank yang ditunjuk atau melalui portal pembayaran kampus." },
+              no: {
+                keyword: "keringanan",
+                yes: { response: "Pengajuan keringanan UKT dapat dilakukan dengan mengisi form dan melampirkan dokumen pendukung." },
+                no: { response: "Informasi UKT dapat dilihat di portal akademik atau hubungi bagian keuangan kampus." }
+              }
+            },
+            no: {
+              keyword: "jadwal",
+              yes: {
+                keyword: "kuliah",
+                yes: { response: "Jadwal kuliah dapat dilihat di portal akademik atau aplikasi mobile kampus." },
+                no: {
+                  keyword: "ujian",
+                  yes: { response: "Jadwal ujian tengah semester dan akhir semester akan diumumkan melalui portal akademik." },
+                  no: { response: "Kalender akademik dapat diakses melalui portal kampus." }
+                }
+              },
+              no: {
+                keyword: "cuti",
+                yes: { response: "Pengajuan cuti akademik dapat dilakukan melalui portal akademik dengan melampirkan surat keterangan dokter (jika sakit) atau dokumen pendukung lainnya." },
+                no: {
+                  keyword: "dosen",
+                  yes: { response: "Informasi dosen pengampu dapat dilihat di KRS atau hubungi bagian akademik fakultas." },
+                  no: {
+                    keyword: "fasilitas",
+                    yes: {
+                      keyword: "perpustakaan",
+                      yes: { response: "Perpustakaan buka setiap hari kerja pukul 08.00-16.00 WIB. Akses e-library tersedia 24 jam melalui portal kampus." },
+                      no: {
+                        keyword: "laboratorium",
+                        yes: { response: "Laboratorium dapat diakses sesuai jadwal praktikum. Pastikan Anda sudah mendaftar dan memiliki kartu akses." },
+                        no: { response: "Informasi fasilitas kampus dapat dilihat di website resmi kampus." }
+                      }
+                    },
+                    no: {
+                      keyword: "beasiswa",
+                      yes: { response: "Informasi beasiswa dapat dilihat di portal akademik atau hubungi bagian kemahasiswaan." },
+                      no: {
+                        keyword: "organisasi",
+                        yes: { response: "Informasi organisasi kemahasiswaan dapat dilihat di website BEM atau hubungi bagian kemahasiswaan." },
+                        no: { response: "Maaf, saya belum bisa menjawab pertanyaan itu. Silakan hubungi bagian akademik fakultas untuk informasi lebih lanjut." }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    };
+
+    // # Fungsi untuk menelusuri decision tree berdasarkan input user
+    function traverseTree(tree, input) {
+      if (tree.response) return tree.response; // # Jika sudah sampai leaf node, kembalikan response
+      // # Jika root node (keyword kosong), langsung ke cabang utama
+      if (!tree.keyword || tree.keyword.trim() === "") {
+        if (tree.no) return traverseTree(tree.no, input);
+        return "Maaf, saya belum bisa menjawab pertanyaan itu.";
+      }
+      // # Cek apakah input mengandung salah satu keyword pada node ini
+      const keywords = tree.keyword.split(" ");
+      const hasKeyword = keywords.some(keyword => input.includes(keyword));
+      if (hasKeyword) {
+        if (tree.yes) return traverseTree(tree.yes, input);
+        return tree.response || "Maaf, saya belum bisa menjawab pertanyaan itu.";
+      } else {
+        if (tree.no) return traverseTree(tree.no, input);
+        return tree.response || "Maaf, saya belum bisa menjawab pertanyaan itu.";
+      }
+    }
+
+    // # Fungsi untuk menampilkan pesan ke chatbox
+    function tampilkan(pengirim, teks) {
+      const chat = document.getElementById("chatbox");
+      const msg = document.createElement("div");
+      msg.className = "message " + pengirim;
+      msg.textContent = pengirim + ": " + teks;
+      chat.appendChild(msg);
+      chat.scrollTop = chat.scrollHeight;
+    }
+
+    // # Fungsi untuk mengirim pesan user dan menampilkan respons bot
+    function kirim() {
+      const input = document.getElementById("userInput");
+      const teks = input.value.trim().toLowerCase();
+      if (teks === "") return;
+      tampilkan("Anda", teks);
+      const respons = traverseTree(decisionTree, teks);
+      tampilkan("Bot", respons);
+      input.value = "";
+    }
+
+    // # Fungsi untuk mereset chatbox dan input
+    function reset() {
+      const chat = document.getElementById("chatbox");
+      chat.innerHTML = "";
+      document.getElementById("userInput").value = "";
+    }
+  </script>
+
+</body>
+
+</html>
