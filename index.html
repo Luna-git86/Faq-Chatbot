@@ -2,90 +2,139 @@
 <html>
 
 <head>
-  <title>Chatbot Akademik dengan Decision Tree</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chatbot Akademik Profesional</title>
   <!-- # Bagian CSS: Mengatur tampilan chatbot -->
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 50px auto;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background-color: #66C240;
+      color: white;
       padding: 20px;
-      max-width: 600px;
-      margin: auto;
-      background-color: #f9f9f9;
+      text-align: center;
+      font-size: 1.4em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    header img {
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9em;
+      color: #666;
+      padding: 10px 0;
+      background-color: #f0f0f0;
+      border-top: 1px solid #ddd;
     }
 
     #chatbox {
-      width: 100%;
-      height: 300px;
-      border: 1px solid #ccc;
-      padding: 10px;
-      overflow-y: scroll;
-      background-color: #fff;
-      margin-bottom: 10px;
+      padding: 20px;
+      height: 400px;
+      overflow-y: auto;
+      border-bottom: 1px solid #ddd;
     }
 
     .message {
-      margin: 5px 0;
+      margin-bottom: 15px;
+      line-height: 1.5;
     }
 
     .user {
-      color: blue;
+      text-align: right;
+      color: #0061a8;
     }
 
     .bot {
-      color: green;
+      text-align: left;
+      color: #333;
+    }
+
+    .input-area {
+      display: flex;
+      padding: 15px;
+      gap: 10px;
+      border-top: 1px solid #ddd;
     }
 
     #userInput {
-      width: 100%;
-      padding: 10px;
       flex: 1;
+      padding: 10px 15px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
     }
 
-    .input-row {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 0;
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
     }
 
     #sendBtn {
-      padding: 10px 15px;
-      background-color: #28a745;
+      background-color: #66C240;
       color: white;
-      border: none;
-      cursor: pointer;
     }
 
     #sendBtn:hover {
-      background-color: #218838;
+      background-color: #559e38;
     }
 
     #resetBtn {
-      padding: 10px 15px;
-      background-color: #dc3545;
-      color: white;
-      border: none;
-      cursor: pointer;
+      background-color: #ccc;
+      color: #333;
     }
 
     #resetBtn:hover {
-      background-color: #c82333;
+      background-color: #bbb;
     }
   </style>
 </head>
 
 <body>
-
-  <!-- # Judul Chatbot -->
-  <h2>Chatbot Akademik - Decision Tree</h2>
-
-  <!-- # Kotak Chat untuk menampilkan percakapan -->
-  <div id="chatbox"></div>
-
-  <!-- # Baris input dan tombol -->
-  <div class="input-row">
-    <input type="text" id="userInput" placeholder="Ketik pertanyaan..." />
-    <button id="sendBtn" onclick="kirim()">Kirim</button>
-    <button id="resetBtn" onclick="reset()">Reset</button>
+  <div class="container">
+    <header>
+      <img src="https://static.wikia.nocookie.net/logopedia/images/b/bd/Politeknik_Negeri_Samarinda.png/revision/latest?cb=20190922203601" 
+           alt="Logo POLNES">
+      Chatbot Akademik - Decision Tree
+    </header>
+    <div id="chatbox"></div>
+    <div class="input-area">
+      <input type="text" id="userInput" placeholder="Tulis pertanyaan Anda...">
+      <button id="sendBtn" onclick="kirim()">Kirim</button>
+      <button id="resetBtn" onclick="reset()">Reset</button>
+    </div>
+    <footer>
+      © 2025 Politeknik Negeri Samarinda - Chatbot Akademik Proyek Capstone
+    </footer>
   </div>
 
   <script>
