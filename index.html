@@ -164,36 +164,34 @@
       <button id="sendBtn" onclick="kirim()">Kirim</button>
       <button id="resetBtn" onclick="reset()">Reset</button>
     </div>
-    <footer>
+    <footer style="text-align:center;font-size:0.9em;color:#666;padding:10px 0;background:#f0f0f0;border-top:1px solid #ddd">
       © 2025 Politeknik Negeri Samarinda - Chatbot Akademik Proyek Capstone
     </footer>
   </div>
 
   <section id="faq-section" style="max-width:700px;margin:30px auto 0 auto;background:#fff;border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,0.05);padding:20px;">
     <h3 style="margin-top:0;color:#66C240;">FAQ (Pertanyaan yang Sering Diajukan)</h3>
-    <ul id="faq-list" style="list-style:none;padding:0;margin:0;">
-      <li><button type="button" class="faq-btn" onclick="isiFAQ('Bagaimana cara mengisi KRS?')">Bagaimana cara mengisi KRS?</button></li>
-      <li><button type="button" class="faq-btn" onclick="isiFAQ('Bagaimana cara mendaftar skripsi?')">Bagaimana cara mendaftar skripsi?</button></li>
-      <li><button type="button" class="faq-btn" onclick="isiFAQ('Bagaimana cara pembayaran UKT?')">Bagaimana cara pembayaran UKT?</button></li>
-      <li><button type="button" class="faq-btn" onclick="isiFAQ('Bagaimana cara melihat jadwal kuliah?')">Bagaimana cara melihat jadwal kuliah?</button></li>
-      <li><button type="button" class="faq-btn" onclick="isiFAQ('Bagaimana cara mengajukan cuti akademik?')">Bagaimana cara mengajukan cuti akademik?</button></li>
-      <li><button type="button" class="faq-btn" onclick="isiFAQ('Bagaimana cara mendapatkan beasiswa?')">Bagaimana cara mendapatkan beasiswa?</button></li>
-      <li><button type="button" class="faq-btn" onclick="isiFAQ('Bagaimana cara bergabung dengan organisasi kemahasiswaan?')">Bagaimana cara bergabung dengan organisasi kemahasiswaan?</button></li>
+    <ul style="list-style:none;padding:0;margin:0;">
+      <li><button type="button" onclick="isiFAQ('Bagaimana cara mengisi KRS?')">Bagaimana cara mengisi KRS?</button></li>
+      <li><button type="button" onclick="isiFAQ('Bagaimana cara mendaftar skripsi?')">Bagaimana cara mendaftar skripsi?</button></li>
+      <li><button type="button" onclick="isiFAQ('Bagaimana cara pembayaran UKT?')">Bagaimana cara pembayaran UKT?</button></li>
+      <li><button type="button" onclick="isiFAQ('Bagaimana cara melihat jadwal kuliah?')">Bagaimana cara melihat jadwal kuliah?</button></li>
+      <li><button type="button" onclick="isiFAQ('Bagaimana cara mengajukan cuti akademik?')">Bagaimana cara mengajukan cuti akademik?</button></li>
+      <li><button type="button" onclick="isiFAQ('Bagaimana cara mendapatkan beasiswa?')">Bagaimana cara mendapatkan beasiswa?</button></li>
+      <li><button type="button" onclick="isiFAQ('Bagaimana cara bergabung dengan organisasi kemahasiswaan?')">Bagaimana cara bergabung dengan organisasi kemahasiswaan?</button></li>
     </ul>
   </section>
 
   <script>
-    // # Fungsi untuk menampilkan pesan ke chatbox
     function tampilkan(pengirim, teks) {
       const chat = document.getElementById("chatbox");
       const msg = document.createElement("div");
-      msg.className = "message " + pengirim;
+      msg.className = "message " + (pengirim === "Anda" ? "user" : "bot");
       msg.textContent = pengirim + ": " + teks;
       chat.appendChild(msg);
       chat.scrollTop = chat.scrollHeight;
     }
 
-    // # Fungsi untuk mengirim pesan user dan menampilkan respons bot
     async function kirim() {
       const input = document.getElementById("userInput");
       const teks = input.value.trim();
@@ -201,21 +199,26 @@
       tampilkan("Anda", teks);
       input.value = "";
 
+      const promptKampus = `
+Kamu adalah chatbot kampus bernama POLNESBot untuk Politeknik Negeri Samarinda.
+Jawablah pertanyaan berikut dengan bahasa Indonesia yang profesional, sopan, dan fokus pada konteks akademik, kuliah, administrasi, dan pelayanan kampus:
+
+Pertanyaan: ${teks}
+Jawaban:
+`;
+
       try {
         const response = await fetch("/api/ollama/api/generate", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             model: "deepseek-coder",
-            prompt: teks,
+            prompt: promptKampus,
             stream: false
-          }),
+          })
         });
 
-        if (!response.ok) {
-          throw new Error(`Status ${response.status}`);
-        }
-
+        if (!response.ok) throw new Error("Gagal: " + response.status);
         const data = await response.json();
         tampilkan("Bot", data.response.trim());
       } catch (error) {
@@ -224,10 +227,8 @@
       }
     }
 
-    // # Fungsi untuk mereset chatbox dan input
     function reset() {
-      const chat = document.getElementById("chatbox");
-      chat.innerHTML = "";
+      document.getElementById("chatbox").innerHTML = "";
       document.getElementById("userInput").value = "";
     }
 
