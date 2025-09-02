@@ -195,119 +195,109 @@
           response: "KRS dapat diakses melalui portal akademik. Pastikan Anda sudah melakukan pembayaran UKT dan tidak memiliki tunggakan. Jangan lupa untuk memeriksa jadwal pengisian KRS di kalender akademik." 
         },
         no: {
-          keyword: "kelas",
+          keyword: "skripsi",
           yes: {
-            keyword: "kosong",
+            keyword: "pendaftaran",
             yes: { 
-              response: "Untuk mengecek kelas kosong, silakan hubungi bagian akademik atau cek langsung papan informasi kampus. Beberapa ruang kelas juga bisa dipesan melalui portal akademik." 
+              response: "Pendaftaran skripsi dilakukan melalui portal akademik. Persiapkan proposal dan surat persetujuan dosen pembimbing. Pastikan juga untuk memeriksa syarat-syarat pendaftaran seperti IPK minimal dan jumlah SKS yang telah diselesaikan." 
             },
-            no: { 
-              response: "Informasi kelas dapat diperoleh melalui portal akademik atau bagian administrasi fakultas." 
+            no: {
+              keyword: "seminar",
+              yes: { 
+                response: "Seminar proposal dan hasil dapat dijadwalkan setelah berkas lengkap dan disetujui dosen pembimbing. Persiapkan presentasi dan bahan seminar dengan baik. Jangan lupa untuk mengundang dosen penguji sesuai ketentuan." 
+              },
+              no: { 
+                response: "Untuk informasi lebih lanjut tentang skripsi, silakan hubungi koordinator skripsi di fakultas Anda. Anda juga dapat mengakses panduan penulisan skripsi di website fakultas." 
+              }
             }
           },
           no: {
-            keyword: "skripsi",
+            keyword: "ukt",
             yes: {
-              keyword: "pendaftaran",
+              keyword: "pembayaran",
               yes: { 
-                response: "Pendaftaran skripsi dilakukan melalui portal akademik. Persiapkan proposal dan surat persetujuan dosen pembimbing. Pastikan juga untuk memeriksa syarat-syarat pendaftaran seperti IPK minimal dan jumlah SKS yang telah diselesaikan." 
+                response: "Pembayaran UKT dapat dilakukan melalui bank yang ditunjuk atau melalui portal pembayaran kampus. Pastikan untuk menyimpan bukti pembayaran. Pembayaran dapat dilakukan secara cicilan sesuai ketentuan yang berlaku." 
               },
               no: {
-                keyword: "seminar",
+                keyword: "keringanan",
                 yes: { 
-                  response: "Seminar proposal dan hasil dapat dijadwalkan setelah berkas lengkap dan disetujui dosen pembimbing. Persiapkan presentasi dan bahan seminar dengan baik. Jangan lupa untuk mengundang dosen penguji sesuai ketentuan." 
+                  response: "Pengajuan keringanan UKT dapat dilakukan dengan mengisi form dan melampirkan dokumen pendukung seperti slip gaji orang tua, surat keterangan tidak mampu, atau dokumen pendukung lainnya. Pengajuan dapat dilakukan setiap semester." 
                 },
                 no: { 
-                  response: "Untuk informasi lebih lanjut tentang skripsi, silakan hubungi koordinator skripsi di fakultas Anda. Anda juga dapat mengakses panduan penulisan skripsi di website fakultas." 
+                  response: "Informasi UKT dapat dilihat di portal akademik atau hubungi bagian keuangan kampus. Besaran UKT bervariasi berdasarkan program studi dan tingkat kemahalan daerah." 
                 }
               }
             },
             no: {
-              keyword: "ukt",
+              keyword: "jadwal",
               yes: {
-                keyword: "pembayaran",
+                keyword: "kuliah",
                 yes: { 
-                  response: "Pembayaran UKT dapat dilakukan melalui bank yang ditunjuk atau melalui portal pembayaran kampus. Pastikan untuk menyimpan bukti pembayaran. Pembayaran dapat dilakukan secara cicilan sesuai ketentuan yang berlaku." 
+                  response: "Jadwal kuliah dapat dilihat di portal akademik atau aplikasi mobile kampus. Jadwal dapat berubah sewaktu-waktu, jadi selalu periksa pembaruan terbaru. Anda juga dapat mengunduh jadwal dalam format PDF." 
                 },
                 no: {
-                  keyword: "keringanan",
-                  yes: { 
-                    response: "Pengajuan keringanan UKT dapat dilakukan dengan mengisi form dan melampirkan dokumen pendukung seperti slip gaji orang tua, surat keterangan tidak mampu, atau dokumen pendukung lainnya. Pengajuan dapat dilakukan setiap semester." 
+                  keyword: "kelas",
+                  yes: {
+                    keyword: "kosong",
+                    yes: { 
+                      response: "Untuk mengecek kelas kosong, silakan hubungi bagian akademik atau cek langsung papan informasi kampus. Beberapa ruang kelas juga bisa dipesan melalui portal akademik." 
+                    },
+                    no: { 
+                      response: "Informasi terkait kelas dapat diperoleh melalui portal akademik atau bagian administrasi fakultas." 
+                    }
                   },
-                  no: { 
-                    response: "Informasi UKT dapat dilihat di portal akademik atau hubungi bagian keuangan kampus. Besaran UKT bervariasi berdasarkan program studi dan tingkat kemahalan daerah." 
+                  no: {
+                    keyword: "ujian",
+                    yes: { 
+                      response: "Jadwal ujian tengah semester dan akhir semester akan diumumkan melalui portal akademik. Pastikan untuk memeriksa ruang dan waktu ujian. Jangan lupa membawa kartu mahasiswa dan alat tulis yang diperlukan." 
+                    },
+                    no: { 
+                      response: "Kalender akademik dapat diakses melalui portal kampus. Kalender mencakup jadwal penting seperti awal semester, libur nasional, dan periode ujian." 
+                    }
                   }
                 }
               },
               no: {
-                keyword: "jadwal",
-                yes: {
-                  keyword: "kuliah",
+                keyword: "cuti",
+                yes: { 
+                  response: "Pengajuan cuti akademik dapat dilakukan melalui portal akademik dengan melampirkan surat keterangan dokter (jika sakit) atau dokumen pendukung lainnya. Cuti dapat diajukan maksimal 2 semester berturut-turut." 
+                },
+                no: {
+                  keyword: "dosen",
                   yes: { 
-                    response: "Jadwal kuliah dapat dilihat di portal akademik atau aplikasi mobile kampus. Jadwal dapat berubah sewaktu-waktu, jadi selalu periksa pembaruan terbaru. Anda juga dapat mengunduh jadwal dalam format PDF." 
+                    response: "Informasi dosen pengampu dapat dilihat di KRS atau hubungi bagian akademik fakultas. Anda juga dapat mengakses jadwal konsultasi dosen melalui portal akademik." 
                   },
                   no: {
-                    keyword: "kelas",
+                    keyword: "fasilitas",
                     yes: {
-                      keyword: "kosong",
+                      keyword: "perpustakaan",
                       yes: { 
-                        response: "Untuk mengecek kelas kosong, silakan hubungi bagian akademik atau cek langsung papan informasi kampus. Beberapa ruang kelas juga bisa dipesan melalui portal akademik." 
-                      },
-                      no: { 
-                        response: "Informasi kelas dapat diperoleh melalui portal akademik atau bagian administrasi fakultas." 
-                      }
-                    },
-                    no: {
-                      keyword: "ujian",
-                      yes: { 
-                        response: "Jadwal ujian tengah semester dan akhir semester akan diumumkan melalui portal akademik. Pastikan untuk memeriksa ruang dan waktu ujian. Jangan lupa membawa kartu mahasiswa dan alat tulis yang diperlukan." 
-                      },
-                      no: { 
-                        response: "Kalender akademik dapat diakses melalui portal kampus. Kalender mencakup jadwal penting seperti awal semester, libur nasional, dan periode ujian." 
-                      }
-                    }
-                  },
-                  no: {
-                    keyword: "cuti",
-                    yes: { 
-                      response: "Pengajuan cuti akademik dapat dilakukan melalui portal akademik dengan melampirkan surat keterangan dokter (jika sakit) atau dokumen pendukung lainnya. Cuti dapat diajukan maksimal 2 semester berturut-turut." 
-                    },
-                    no: {
-                      keyword: "dosen",
-                      yes: { 
-                        response: "Informasi dosen pengampu dapat dilihat di KRS atau hubungi bagian akademik fakultas. Anda juga dapat mengakses jadwal konsultasi dosen melalui portal akademik." 
+                        response: "Perpustakaan buka setiap hari kerja pukul 08.00-16.00 WIB. Akses e-library tersedia 24 jam melalui portal kampus. Perpustakaan menyediakan berbagai koleksi buku, jurnal, dan sumber belajar digital." 
                       },
                       no: {
-                        keyword: "fasilitas",
-                        yes: {
-                          keyword: "perpustakaan",
-                          yes: { 
-                            response: "Perpustakaan buka setiap hari kerja pukul 08.00-16.00 WIB. Akses e-library tersedia 24 jam melalui portal kampus. Perpustakaan menyediakan berbagai koleksi buku, jurnal, dan sumber belajar digital." 
-                          },
-                          no: {
-                            keyword: "laboratorium",
-                            yes: { 
-                              response: "Laboratorium dapat diakses sesuai jadwal praktikum. Pastikan Anda sudah mendaftar dan memiliki kartu akses. Setiap laboratorium memiliki aturan dan prosedur keselamatan yang harus dipatuhi." 
-                            },
-                            no: { 
-                              response: "Informasi fasilitas kampus dapat dilihat di website resmi kampus. Kampus menyediakan berbagai fasilitas seperti wifi, ruang diskusi, dan area olahraga." 
-                            }
-                          }
+                        keyword: "laboratorium",
+                        yes: { 
+                          response: "Laboratorium dapat diakses sesuai jadwal praktikum. Pastikan Anda sudah mendaftar dan memiliki kartu akses. Setiap laboratorium memiliki aturan dan prosedur keselamatan yang harus dipatuhi." 
+                        },
+                        no: { 
+                          response: "Informasi fasilitas kampus dapat dilihat di website resmi kampus. Kampus menyediakan berbagai fasilitas seperti wifi, ruang diskusi, dan area olahraga." 
+                        }
+                      }
+                    },
+                    no: {
+                      keyword: "beasiswa",
+                      yes: { 
+                        response: "Informasi beasiswa dapat dilihat di portal akademik atau hubungi bagian kemahasiswaan. Beberapa jenis beasiswa yang tersedia: beasiswa prestasi, beasiswa bantuan, dan beasiswa dari mitra kampus." 
+                      },
+                      no: {
+                        keyword: "organisasi",
+                        yes: { 
+                          response: "Informasi organisasi kemahasiswaan dapat dilihat di website BEM atau hubungi bagian kemahasiswaan. Kampus memiliki berbagai unit kegiatan mahasiswa seperti UKM olahraga, seni, dan keagamaan." 
                         },
                         no: {
-                          keyword: "beasiswa",
-                          yes: { 
-                            response: "Informasi beasiswa dapat dilihat di portal akademik atau hubungi bagian kemahasiswaan. Beberapa jenis beasiswa yang tersedia: beasiswa prestasi, beasiswa bantuan, dan beasiswa dari mitra kampus." 
-                          },
-                          no: {
-                            keyword: "organisasi",
-                            yes: { 
-                              response: "Informasi organisasi kemahasiswaan dapat dilihat di website BEM atau hubungi bagian kemahasiswaan. Kampus memiliki berbagai unit kegiatan mahasiswa seperti UKM olahraga, seni, dan keagamaan." 
-                            },
-                            no: {
-                              keyword: "wisuda",
-                              yes: {
-                                response: "Informasi wisuda dapat dilihat di portal akademik. Persiapkan dokumen yang diperlukan seperti transkrip nilai, sertifikat TOEFL, dan foto wisuda. Wisuda biasanya diadakan 2 kali dalam setahun."
+                          keyword: "wisuda",
+                          yes: {
+                            response: "Informasi wisuda dapat dilihat di portal akademik. Persiapkan dokumen yang diperlukan seperti transkrip nilai, sertifikat TOEFL, dan foto wisuda. Wisuda biasanya diadakan 2 kali dalam setahun."
                           },
                           no: {
                             keyword: "magang",
