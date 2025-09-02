@@ -236,12 +236,24 @@
                   response: "Jadwal kuliah dapat dilihat di portal akademik atau aplikasi mobile kampus. Jadwal dapat berubah sewaktu-waktu, jadi selalu periksa pembaruan terbaru. Anda juga dapat mengunduh jadwal dalam format PDF." 
                 },
                 no: {
-                  keyword: "ujian",
-                  yes: { 
-                    response: "Jadwal ujian tengah semester dan akhir semester akan diumumkan melalui portal akademik. Pastikan untuk memeriksa ruang dan waktu ujian. Jangan lupa membawa kartu mahasiswa dan alat tulis yang diperlukan." 
+                  keyword: "kelas",
+                  yes: {
+                    keyword: "kosong",
+                    yes: { 
+                      response: "Untuk mengecek kelas kosong, silakan hubungi bagian akademik atau cek langsung papan informasi kampus. Beberapa ruang kelas juga bisa dipesan melalui portal akademik." 
+                    },
+                    no: { 
+                      response: "Informasi terkait kelas dapat diperoleh melalui portal akademik atau bagian administrasi fakultas." 
+                    }
                   },
-                  no: { 
-                    response: "Kalender akademik dapat diakses melalui portal kampus. Kalender mencakup jadwal penting seperti awal semester, libur nasional, dan periode ujian." 
+                  no: {
+                    keyword: "ujian",
+                    yes: { 
+                      response: "Jadwal ujian tengah semester dan akhir semester akan diumumkan melalui portal akademik. Pastikan untuk memeriksa ruang dan waktu ujian. Jangan lupa membawa kartu mahasiswa dan alat tulis yang diperlukan." 
+                    },
+                    no: { 
+                      response: "Kalender akademik dapat diakses melalui portal kampus. Kalender mencakup jadwal penting seperti awal semester, libur nasional, dan periode ujian." 
+                    }
                   }
                 }
               },
