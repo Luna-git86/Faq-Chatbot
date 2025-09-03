@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chatbot Akademik Profesional</title>
   <!-- # Bagian CSS: Mengatur tampilan chatbot -->
   <style>
@@ -24,7 +24,7 @@
       margin: 50px auto;
       background: white;
       border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
       overflow: hidden;
       display: flex;
       flex-direction: column;
@@ -119,33 +119,41 @@
     }
 
     @media (max-width: 600px) {
-      .container, #faq-section {
+
+      .container,
+      #faq-section {
         max-width: 100%;
         margin: 10px 0 0 0;
         border-radius: 0;
         box-shadow: none;
       }
+
       #chatbox {
         padding: 10px;
         height: 300px;
       }
+
       .input-area {
         flex-direction: column;
         gap: 8px;
         padding: 10px;
       }
+
       #userInput {
         font-size: 15px;
         padding: 8px 10px;
       }
+
       button {
         font-size: 15px;
         padding: 10px;
       }
+
       header {
         font-size: 1.1em;
         padding: 12px;
       }
+
       header img {
         height: 36px;
       }
@@ -165,22 +173,40 @@
       <button id="sendBtn" onclick="kirim()">Kirim</button>
       <button id="resetBtn" onclick="reset()">Reset</button>
     </div>
+    <div id="saranBox" style="margin:20px; padding:15px; border:1px solid #ccc; background:#f9f9f9; border-radius:8px;">
+      <h3>💡 Form Saran</h3>
+      <p>Jika pertanyaan Anda belum terjawab, silakan tulis saran di bawah:</p>
+      <textarea id="saranInput" rows="3"
+        style="width:100%; padding:8px; border:1px solid #ccc; border-radius:5px;"></textarea><br><br>
+      <button onclick="kirimSaran()">Kirim Saran</button>
+    </div>
     <footer>
       © 2025 Politeknik Negeri Samarinda - Chatbot Akademik Proyek Capstone
     </footer>
   </div>
 
-  <section id="faq-section" style="max-width:700px;margin:30px auto 0 auto;background:#fff;border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,0.05);padding:20px;">
+  <section id="faq-section"
+    style="max-width:700px;margin:30px auto 0 auto;background:#fff;border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,0.05);padding:20px;">
     <h3 style="margin-top:0;color:#66C240;">FAQ (Pertanyaan yang Sering Diajukan)</h3>
     <ul id="faq-list" style="list-style:none;padding:0;margin:0;">
-      <li><button type="button" class="faq-btn" onclick="isiFAQ('Bagaimana cara mengisi KRS?')">Bagaimana cara mengisi KRS?</button></li>
-      <li><button type="button" class="faq-btn" onclick="isiFAQ('Bagaimana cara mendaftar skripsi?')">Bagaimana cara mendaftar skripsi?</button></li>
-      <li><button type="button" class="faq-btn" onclick="isiFAQ('Bagaimana cara pembayaran UKT?')">Bagaimana cara pembayaran UKT?</button></li>
-      <li><button type="button" class="faq-btn" onclick="isiFAQ('Bagaimana cara melihat jadwal kuliah?')">Bagaimana cara melihat jadwal kuliah?</button></li>
-      <li><button type="button" class="faq-btn" onclick="isiFAQ('Bagaimana cara cek jadwal yang ada kelas kosong?')">Bagaimana cara cek jadwal yang ada kelas kosong?</button></li>
-      <li><button type="button" class="faq-btn" onclick="isiFAQ('Bagaimana cara mengajukan cuti akademik?')">Bagaimana cara mengajukan cuti akademik?</button></li>
-      <li><button type="button" class="faq-btn" onclick="isiFAQ('Bagaimana cara mendapatkan beasiswa?')">Bagaimana cara mendapatkan beasiswa?</button></li>
-      <li><button type="button" class="faq-btn" onclick="isiFAQ('Bagaimana cara bergabung dengan organisasi kemahasiswaan?')">Bagaimana cara bergabung dengan organisasi kemahasiswaan?</button></li>
+      <li><button type="button" class="faq-btn" onclick="isiFAQ('Bagaimana cara mengisi KRS?')">Bagaimana cara mengisi
+          KRS?</button></li>
+      <li><button type="button" class="faq-btn" onclick="isiFAQ('Bagaimana cara mendaftar skripsi?')">Bagaimana cara
+          mendaftar skripsi?</button></li>
+      <li><button type="button" class="faq-btn" onclick="isiFAQ('Bagaimana cara pembayaran UKT?')">Bagaimana cara
+          pembayaran UKT?</button></li>
+      <li><button type="button" class="faq-btn" onclick="isiFAQ('Bagaimana cara melihat jadwal kuliah?')">Bagaimana cara
+          melihat jadwal kuliah?</button></li>
+      <li><button type="button" class="faq-btn"
+          onclick="isiFAQ('Bagaimana cara cek jadwal yang ada kelas kosong?')">Bagaimana cara cek jadwal yang ada kelas
+          kosong?</button></li>
+      <li><button type="button" class="faq-btn" onclick="isiFAQ('Bagaimana cara mengajukan cuti akademik?')">Bagaimana
+          cara mengajukan cuti akademik?</button></li>
+      <li><button type="button" class="faq-btn" onclick="isiFAQ('Bagaimana cara mendapatkan beasiswa?')">Bagaimana cara
+          mendapatkan beasiswa?</button></li>
+      <li><button type="button" class="faq-btn"
+          onclick="isiFAQ('Bagaimana cara bergabung dengan organisasi kemahasiswaan?')">Bagaimana cara bergabung dengan
+          organisasi kemahasiswaan?</button></li>
     </ul>
   </section>
 
@@ -192,23 +218,23 @@
       yes: null, // tidak digunakan
       no: {
         keyword: "krs",
-        yes: { 
-          response: "KRS dapat diakses melalui portal akademik. Pastikan Anda sudah melakukan pembayaran UKT dan tidak memiliki tunggakan. Jangan lupa untuk memeriksa jadwal pengisian KRS di kalender akademik." 
+        yes: {
+          response: "KRS dapat diakses melalui portal akademik. Pastikan Anda sudah melakukan pembayaran UKT dan tidak memiliki tunggakan. Jangan lupa untuk memeriksa jadwal pengisian KRS di kalender akademik."
         },
         no: {
           keyword: "skripsi",
           yes: {
             keyword: "pendaftaran",
-            yes: { 
-              response: "Pendaftaran skripsi dilakukan melalui portal akademik. Persiapkan proposal dan surat persetujuan dosen pembimbing. Pastikan juga untuk memeriksa syarat-syarat pendaftaran seperti IPK minimal dan jumlah SKS yang telah diselesaikan." 
+            yes: {
+              response: "Pendaftaran skripsi dilakukan melalui portal akademik. Persiapkan proposal dan surat persetujuan dosen pembimbing. Pastikan juga untuk memeriksa syarat-syarat pendaftaran seperti IPK minimal dan jumlah SKS yang telah diselesaikan."
             },
             no: {
               keyword: "seminar",
-              yes: { 
-                response: "Seminar proposal dan hasil dapat dijadwalkan setelah berkas lengkap dan disetujui dosen pembimbing. Persiapkan presentasi dan bahan seminar dengan baik. Jangan lupa untuk mengundang dosen penguji sesuai ketentuan." 
+              yes: {
+                response: "Seminar proposal dan hasil dapat dijadwalkan setelah berkas lengkap dan disetujui dosen pembimbing. Persiapkan presentasi dan bahan seminar dengan baik. Jangan lupa untuk mengundang dosen penguji sesuai ketentuan."
               },
-              no: { 
-                response: "Untuk informasi lebih lanjut tentang skripsi, silakan hubungi koordinator skripsi di fakultas Anda. Anda juga dapat mengakses panduan penulisan skripsi di website fakultas." 
+              no: {
+                response: "Untuk informasi lebih lanjut tentang skripsi, silakan hubungi koordinator skripsi di fakultas Anda. Anda juga dapat mengakses panduan penulisan skripsi di website fakultas."
               }
             }
           },
@@ -216,16 +242,16 @@
             keyword: "ukt",
             yes: {
               keyword: "pembayaran",
-              yes: { 
-                response: "Pembayaran UKT dapat dilakukan melalui bank yang ditunjuk atau melalui portal pembayaran kampus. Pastikan untuk menyimpan bukti pembayaran. Pembayaran dapat dilakukan secara cicilan sesuai ketentuan yang berlaku." 
+              yes: {
+                response: "Pembayaran UKT dapat dilakukan melalui bank yang ditunjuk atau melalui portal pembayaran kampus. Pastikan untuk menyimpan bukti pembayaran. Pembayaran dapat dilakukan secara cicilan sesuai ketentuan yang berlaku."
               },
               no: {
                 keyword: "keringanan",
-                yes: { 
-                  response: "Pengajuan keringanan UKT dapat dilakukan dengan mengisi form dan melampirkan dokumen pendukung seperti slip gaji orang tua, surat keterangan tidak mampu, atau dokumen pendukung lainnya. Pengajuan dapat dilakukan setiap semester." 
+                yes: {
+                  response: "Pengajuan keringanan UKT dapat dilakukan dengan mengisi form dan melampirkan dokumen pendukung seperti slip gaji orang tua, surat keterangan tidak mampu, atau dokumen pendukung lainnya. Pengajuan dapat dilakukan setiap semester."
                 },
-                no: { 
-                  response: "Informasi UKT dapat dilihat di portal akademik atau hubungi bagian keuangan kampus. Besaran UKT bervariasi berdasarkan program studi dan tingkat kemahalan daerah." 
+                no: {
+                  response: "Informasi UKT dapat dilihat di portal akademik atau hubungi bagian keuangan kampus. Besaran UKT bervariasi berdasarkan program studi dan tingkat kemahalan daerah."
                 }
               }
             },
@@ -233,67 +259,67 @@
               keyword: "jadwal",
               yes: {
                 keyword: "kuliah",
-                yes: { 
-                  response: "Jadwal kuliah dapat dilihat di portal akademik atau aplikasi mobile kampus. Jadwal dapat berubah sewaktu-waktu, jadi selalu periksa pembaruan terbaru. Anda juga dapat mengunduh jadwal dalam format PDF." 
+                yes: {
+                  response: "Jadwal kuliah dapat dilihat di portal akademik atau aplikasi mobile kampus. Jadwal dapat berubah sewaktu-waktu, jadi selalu periksa pembaruan terbaru. Anda juga dapat mengunduh jadwal dalam format PDF."
                 },
                 no: {
                   keyword: "kelas",
                   yes: {
                     keyword: "kosong",
-                    yes: { 
-                      response: "Untuk mengecek kelas kosong, silakan hubungi bagian akademik atau cek langsung papan informasi kampus. Beberapa ruang kelas juga bisa dipesan melalui portal akademik." 
+                    yes: {
+                      response: "Untuk mengecek kelas kosong, silakan hubungi bagian akademik atau cek langsung papan informasi kampus. Beberapa ruang kelas juga bisa dipesan melalui portal akademik."
                     },
-                    no: { 
-                      response: "Informasi terkait kelas dapat diperoleh melalui portal akademik atau bagian administrasi fakultas." 
+                    no: {
+                      response: "Informasi terkait kelas dapat diperoleh melalui portal akademik atau bagian administrasi fakultas."
                     }
                   },
                   no: {
                     keyword: "ujian",
-                    yes: { 
-                      response: "Jadwal ujian tengah semester dan akhir semester akan diumumkan melalui portal akademik. Pastikan untuk memeriksa ruang dan waktu ujian. Jangan lupa membawa kartu mahasiswa dan alat tulis yang diperlukan." 
+                    yes: {
+                      response: "Jadwal ujian tengah semester dan akhir semester akan diumumkan melalui portal akademik. Pastikan untuk memeriksa ruang dan waktu ujian. Jangan lupa membawa kartu mahasiswa dan alat tulis yang diperlukan."
                     },
-                    no: { 
-                      response: "Kalender akademik dapat diakses melalui portal kampus. Kalender mencakup jadwal penting seperti awal semester, libur nasional, dan periode ujian." 
+                    no: {
+                      response: "Kalender akademik dapat diakses melalui portal kampus. Kalender mencakup jadwal penting seperti awal semester, libur nasional, dan periode ujian."
                     }
                   }
                 }
               },
               no: {
                 keyword: "cuti",
-                yes: { 
-                  response: "Pengajuan cuti akademik dapat dilakukan melalui portal akademik dengan melampirkan surat keterangan dokter (jika sakit) atau dokumen pendukung lainnya. Cuti dapat diajukan maksimal 2 semester berturut-turut." 
+                yes: {
+                  response: "Pengajuan cuti akademik dapat dilakukan melalui portal akademik dengan melampirkan surat keterangan dokter (jika sakit) atau dokumen pendukung lainnya. Cuti dapat diajukan maksimal 2 semester berturut-turut."
                 },
                 no: {
                   keyword: "dosen",
-                  yes: { 
-                    response: "Informasi dosen pengampu dapat dilihat di KRS atau hubungi bagian akademik fakultas. Anda juga dapat mengakses jadwal konsultasi dosen melalui portal akademik." 
+                  yes: {
+                    response: "Informasi dosen pengampu dapat dilihat di KRS atau hubungi bagian akademik fakultas. Anda juga dapat mengakses jadwal konsultasi dosen melalui portal akademik."
                   },
                   no: {
                     keyword: "fasilitas",
                     yes: {
                       keyword: "perpustakaan",
-                      yes: { 
-                        response: "Perpustakaan buka setiap hari kerja pukul 08.00-16.00 WIB. Akses e-library tersedia 24 jam melalui portal kampus. Perpustakaan menyediakan berbagai koleksi buku, jurnal, dan sumber belajar digital." 
+                      yes: {
+                        response: "Perpustakaan buka setiap hari kerja pukul 08.00-16.00 WIB. Akses e-library tersedia 24 jam melalui portal kampus. Perpustakaan menyediakan berbagai koleksi buku, jurnal, dan sumber belajar digital."
                       },
                       no: {
                         keyword: "laboratorium",
-                        yes: { 
-                          response: "Laboratorium dapat diakses sesuai jadwal praktikum. Pastikan Anda sudah mendaftar dan memiliki kartu akses. Setiap laboratorium memiliki aturan dan prosedur keselamatan yang harus dipatuhi." 
+                        yes: {
+                          response: "Laboratorium dapat diakses sesuai jadwal praktikum. Pastikan Anda sudah mendaftar dan memiliki kartu akses. Setiap laboratorium memiliki aturan dan prosedur keselamatan yang harus dipatuhi."
                         },
-                        no: { 
-                          response: "Informasi fasilitas kampus dapat dilihat di website resmi kampus. Kampus menyediakan berbagai fasilitas seperti wifi, ruang diskusi, dan area olahraga." 
+                        no: {
+                          response: "Informasi fasilitas kampus dapat dilihat di website resmi kampus. Kampus menyediakan berbagai fasilitas seperti wifi, ruang diskusi, dan area olahraga."
                         }
                       }
                     },
                     no: {
                       keyword: "beasiswa",
-                      yes: { 
-                        response: "Informasi beasiswa dapat dilihat di portal akademik atau hubungi bagian kemahasiswaan. Beberapa jenis beasiswa yang tersedia: beasiswa prestasi, beasiswa bantuan, dan beasiswa dari mitra kampus." 
+                      yes: {
+                        response: "Informasi beasiswa dapat dilihat di portal akademik atau hubungi bagian kemahasiswaan. Beberapa jenis beasiswa yang tersedia: beasiswa prestasi, beasiswa bantuan, dan beasiswa dari mitra kampus."
                       },
                       no: {
                         keyword: "organisasi",
-                        yes: { 
-                          response: "Informasi organisasi kemahasiswaan dapat dilihat di website BEM atau hubungi bagian kemahasiswaan. Kampus memiliki berbagai unit kegiatan mahasiswa seperti UKM olahraga, seni, dan keagamaan." 
+                        yes: {
+                          response: "Informasi organisasi kemahasiswaan dapat dilihat di website BEM atau hubungi bagian kemahasiswaan. Kampus memiliki berbagai unit kegiatan mahasiswa seperti UKM olahraga, seni, dan keagamaan."
                         },
                         no: {
                           keyword: "wisuda",
@@ -310,8 +336,8 @@
                               yes: {
                                 response: "Informasi jaringan alumni dapat diakses melalui portal alumni. Alumni dapat bergabung dalam berbagai program seperti mentoring, sharing session, dan networking event."
                               },
-                              no: { 
-                                response: "Maaf, saya belum bisa menjawab pertanyaan itu. Silakan hubungi bagian akademik fakultas untuk informasi lebih lanjut." 
+                              no: {
+                                response: "Maaf, saya belum bisa menjawab pertanyaan itu. Silakan hubungi bagian akademik fakultas untuk informasi lebih lanjut."
                               }
                             }
                           }
@@ -374,11 +400,29 @@
       chat.innerHTML = "";
       document.getElementById("userInput").value = "";
     }
-
+    
     function isiFAQ(teks) {
       document.getElementById('userInput').value = teks;
       document.getElementById('userInput').focus();
     }
+
+    // # Fungsi untuk mengirim saran pengguna
+    function kirimSaran() {
+      const saran = document.getElementById("saranInput").value.trim();
+      if (!saran) {
+        alert("Mohon isi saran terlebih dahulu.");
+        return;
+      }
+
+      // Untuk saat ini tampilkan di console
+      console.log("Saran pengguna:", saran);
+
+      // Reset textarea
+      document.getElementById("saranInput").value = "";
+
+      alert("Terima kasih atas sarannya! 🙏");
+    }
+
   </script>
 
 </body>
